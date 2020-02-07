@@ -1,0 +1,43 @@
+<h1 mat-dialog-title></h1>
+<div mat-dialog-content>
+  <mat-tab-group dynamicHeight (selectedIndexChange)="changeTab($event)">
+    <mat-tab label="Sign Up">
+      <div>
+        <mat-form-field appearance="fill" style="width: 100%; height: 20%;">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="width: 45%; height: 20%;">
+          <mat-label>Enter your password</mat-label>
+          <input matInput placeholder="password" [formControl]="password" required type='password'>
+          <mat-error *ngIf="password.invalid">{{getPasswordError()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="width: 45%; height: 20%; margin-left: 5%">
+          <mat-label>Enter your password again</mat-label>
+          <input matInput placeholder="retype password" [formControl]="retypePassword" required type='password'>
+          <mat-error *ngIf="password.invalid">{{getRetypePasswordError()}}</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-tab>
+    <mat-tab label="Login">
+      <div>
+        <mat-form-field appearance="fill" style="width: 45%; height: 20%;">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="width: 45%; height: 20%; margin-left: 2%">
+          <mat-label>Enter your password</mat-label>
+          <input matInput placeholder="password" [formControl]="password" required type='password'>
+          <mat-error *ngIf="password.invalid">{{getPasswordError()}}</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<div>
+  <button *ngIf="isSignUp" mat-button (click)="signUp()">Sign Up</button>
+  <button *ngIf="!isSignUp" mat-button (click)="login()">Login</button>
+  <button *ngIf="!isSignUp" mat-button (click)="loginWithGG()">Login with Google</button>
+</div>
